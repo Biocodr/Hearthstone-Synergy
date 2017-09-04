@@ -1,5 +1,0 @@
-{
-  "name"    : "hearthstone-synergy",
-  "version" : "1.0.0",
-  "main"    : "electron.js"
-}
