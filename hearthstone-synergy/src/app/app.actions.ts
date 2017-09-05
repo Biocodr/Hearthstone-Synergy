@@ -9,8 +9,11 @@ export const ActionTypes = {
 export class AddTodoItemAction implements Action {
   static readonly TYPE = ActionTypes.AddTodo;
   readonly type = AddTodoItemAction.TYPE;
+  readonly payload: TodoItem;
 
-  constructor(public readonly item: TodoItem) { }
+  constructor(public readonly item: TodoItem) { 
+      this.payload = item;
+  }
 }
 
 export type Actions =
