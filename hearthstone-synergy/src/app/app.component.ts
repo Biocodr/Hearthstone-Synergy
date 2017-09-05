@@ -14,7 +14,7 @@ import { AddTodoItemAction } from './app.actions';
 export class AppComponent implements OnInit {
   items$: Observable<TodoItem[]>;
 
-  private graphData: Array<any>;
+  private chartData: Array<any>;
 
   constructor(private store: Store<RootState>) {
     this.items$ = store.select(s => s.app.items);
@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
   }
 
   generateData() {
-    this.graphData = [];
+    this.chartData = [];
     for (let i = 0; i < (8 + Math.floor(Math.random() * 10)); i++) {
-      this.graphData.push([`Index ${i}`, Math.floor(Math.random() * 100)]);
+      this.chartData.push([`Index ${i}`, Math.floor(Math.random() * 100)]);
     }
   }
 }

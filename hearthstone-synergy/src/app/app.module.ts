@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { AppComponent } from './app.component';
-import { GraphComponent } from './graph/graph.component';
+import { BarChartComponent } from './barchart/barchart.component';
 
 import { counterReducer } from './counter';
 
@@ -15,7 +15,7 @@ import { AppEffects }from './app.effects';
 @NgModule({
   declarations: [
     AppComponent,
-    GraphComponent
+    BarChartComponent
   ],
   imports: [
     BrowserModule,

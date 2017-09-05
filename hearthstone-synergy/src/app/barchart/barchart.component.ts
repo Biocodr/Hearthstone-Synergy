@@ -2,14 +2,14 @@ import { Component, OnInit, OnChanges, ViewChild, ElementRef, Input } from '@ang
 import * as d3 from 'd3';
 
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
+  selector: 'app-barchart',
+  templateUrl: './barchart.component.html',
+  styleUrls: ['./barchart.component.scss']
 })
-export class GraphComponent implements OnInit, OnChanges {
-  @ViewChild('graph') private graphContainer: ElementRef;
+export class BarChartComponent implements OnInit, OnChanges {
+  @ViewChild('chart') private chartContainer: ElementRef;
   @Input() private data: Array<any>;
-  private graph: any;
+  private chart: any;
   private margin: any = { top: 20, bottom: 20, left: 20, right: 20};
   private width: number;
   private height: number;
@@ -29,13 +29,13 @@ export class GraphComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.graph) {
+    if (this.chart) {
       this.updateChart();
     }
   }
 
   createChart() {
-    let element = this.graphContainer.nativeElement;
+    let element = this.chartContainer.nativeElement;
     this.width = element.offsetWidth - this.margin.left - this.margin.right;
     this.height = element.offsetHeight - this.margin.top - this.margin.bottom;
 
@@ -44,7 +44,7 @@ export class GraphComponent implements OnInit, OnChanges {
       .attr('height', element.offsetHeight);
 
     // chart plot area
-    this.graph = svg.append('g')
+    this.chart = svg.append('g')
       .attr('class', 'bars')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
@@ -78,14 +78,14 @@ export class GraphComponent implements OnInit, OnChanges {
     this.xAxis.transition().call(d3.axisBottom(this.xScale));
     this.yAxis.transition().call(d3.axisLeft(this.yScale));
 
-    let update = this.graph.selectAll('.bar')
+    let update = this.chart.selectAll('.bar')
       .data(this.data);
 
     // remove exiting bars
     update.exit().remove();
 
     // update existing bars
-    this.graph.selectAll('.bar').transition()
+    this.chart.selectAll('.bar').transition()
       .attr('x', d => this.xScale(d[0]))
       .attr('y', d => this.yScale(d[1]))
       .attr('width', d => this.xScale.bandwidth())
