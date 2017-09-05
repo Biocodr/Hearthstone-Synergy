@@ -1,17 +1,5 @@
-<div class="main-content">
+<h1>Welcome to Hearthstone Synergy</h1>
 
-  Welcome to Hearthstone Synergy
-  
-  <!--<app-item-form [formState]="formState$ | async"
-                  (addTodoItem)="addTodoItem($event)"></app-item-form>-->
-  
-  <div *ngFor="let item of items$ | async">
-    <div class="list-item">
-      <div class="category">{{item.category}}</div>
-      <div class="text">{{item.text}}</div>
-      <div class="priority">{{item.meta.priority > 0 ? item.meta.priority : ''}}</div>
-      <div class="duedate">{{formatDate(item.meta.duedate)}}</div>
-    </div>
-  </div>
+<app-graph
 
-</div>
+    [data]="graphData"></app-graph>
