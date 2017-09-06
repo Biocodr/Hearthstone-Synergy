@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Node, Link, ForceDirectedGraph } from './models';
 import * as d3 from 'd3';
 
 @Injectable()
@@ -18,5 +19,7 @@ export class D3Service {
     /** The interactable graph we will simulate in this article
     * This method does not interact with the document, purely physical calculations with d3
     */
-    getForceDirectedGraph() { }
+    getForceDirectedGraph(nodes: Node[], links: Link[], options: { width, height }) {
+        return new ForceDirectedGraph(nodes, links, options);
+     }
 }

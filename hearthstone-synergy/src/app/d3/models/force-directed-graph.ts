@@ -1,7 +1,8 @@
 import { EventEmitter } from '@angular/core';
 import * as d3 from 'd3';
 
-import { Link, Node } from './';
+import { Node } from './node';
+import { Link } from './link';
 
 const FORCES = {
     LINKS: 1 / 50,
