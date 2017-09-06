@@ -1,3 +1,5 @@
+import { CounterState } from './counter';
+
 export class TodoItem {
   readonly category: 'Private' | 'Work';
   readonly text: string;
@@ -11,10 +13,11 @@ export interface AppState {
     items: TodoItem[];
 }
 
-export const initialState: AppState = {
+export const initialAppState: AppState = {
     items: []
 };
 
 export interface RootState {
   app: AppState;
+  counter: CounterState;
 }

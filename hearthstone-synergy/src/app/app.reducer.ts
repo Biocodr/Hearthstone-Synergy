@@ -1,7 +1,9 @@
-import { AppState, initialState } from './app.state';
+import { AppState, initialAppState } from './app.state';
 import { Actions, AddTodoItemAction } from './app.actions';
 
-export function appReducer(state = initialState, action: Actions): AppState {
+import { counterReducer } from './counter';
+
+export function appReducer(state = initialAppState, action: Actions): AppState {
     switch (action.type) {
         case AddTodoItemAction.TYPE:
             return {
@@ -17,5 +19,6 @@ export function appReducer(state = initialState, action: Actions): AppState {
 }
 
 export const reducers = {
-    app: appReducer
+    app: appReducer,
+    counter: counterReducer
 };

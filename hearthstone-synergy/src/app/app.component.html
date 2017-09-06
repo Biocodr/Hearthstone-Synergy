@@ -1,6 +1,12 @@
 <h1>Welcome to Hearthstone Synergy</h1>
 
+<div>
+    <button (click)="increment()">Increment</button>
+    <div>Current Count: {{ counter$ | async }}</div>
+    <button (click)="decrement()">Decrement</button>
+</div>
+
+<!-- <app-graph></app-graph> -->
+
 <!-- <app-barchart
     [data]="chartData"></app-barchart> -->
-
-<app-graph></app-graph>

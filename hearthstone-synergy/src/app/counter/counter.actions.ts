@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const ActionTypes = {
-    INCREMENT: 'hs/counter/INCREMENT',
+    INCREMENT: '/counter/INCREMENT',
     DECREMENT: 'hs/counter/DECREMENT'
 };
 

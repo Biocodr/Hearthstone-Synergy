@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { RootState, TodoItem } from './app.state';
 import { AddTodoItemAction } from './app.actions';
 
+import { IncrementAction, DecrementAction } from './counter';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,12 +14,23 @@ import { AddTodoItemAction } from './app.actions';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
+  counter$: Observable<number>;
   items$: Observable<TodoItem[]>;
 
   private chartData: Array<any>;
 
   constructor(private store: Store<RootState>) {
+    this.counter$ = store.select(s => s.counter.counter);
     this.items$ = store.select(s => s.app.items);
+
+  }
+
+  increment() {
+    this.store.dispatch(new IncrementAction(1));
+  }
+
+  decrement() {
+    this.store.dispatch(new DecrementAction(1));
   }
 
   addTodoItem(item: TodoItem) {
