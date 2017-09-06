@@ -11,11 +11,13 @@ import { counterReducer } from './counter';
 
 import { reducers } from './app.reducer';
 import { AppEffects }from './app.effects';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BarChartComponent
+    BarChartComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,

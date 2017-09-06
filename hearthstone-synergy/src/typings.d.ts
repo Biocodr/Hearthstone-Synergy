@@ -36,4 +36,5 @@ declare module 'd3' {
   export * from 'd3-transition';
   export * from 'd3-voronoi';
   export * from 'd3-zoom';
-}
+}  
+  
