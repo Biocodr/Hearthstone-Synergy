@@ -6,9 +6,9 @@ import { Link } from './link';
 
 // https://github.com/d3/d3-force/blob/master/README.md
 const FORCES = {
-    LINK_STRENGTH: link => { return 1 / 500; /*Math.min(link.source, link.target)*/ },
-    LINK_DISTANCE: (link: Link, i: number, links:Link[]) => { return 0; }, // default: 30
-    COLLISION_STRENGTH: 0.9, // [0, 1], default 0.7
+    LINK_STRENGTH: link => { return 1 / 10; /*Math.min(link.source, link.target)*/ },
+    LINK_DISTANCE: (link: Link, i: number, links:Link[]) => { return 30; }, // default: 30
+    COLLISION_STRENGTH: 0.7, // [0, 1], default 0.7
     COLLISION_RADIUS: 10, // bonus distance between nodes
     COLLISION_ITERATION: 2, // [1, ...], default 1
     CHARGE_STRENGTH: -1 // neagtive: repulsion, positive: gravity, default: -30

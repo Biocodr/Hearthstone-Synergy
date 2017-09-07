@@ -79,7 +79,7 @@ export class AppComponent implements OnInit {
   // }
 
   generateGraphData2() {
-      const N = 50;
+      const N = 100;
       
       for (let i = 0; i < N; i++) {
         this.nodes.push(new Node(i, cards[i]));
