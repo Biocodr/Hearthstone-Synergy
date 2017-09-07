@@ -79,9 +79,25 @@ export class AppComponent implements OnInit {
   // }
 
   generateGraphData2() {
-    
-      for (let i = 0; i < cards.length; i++) {
+      const N = 50;
+      
+      for (let i = 0; i < N; i++) {
         this.nodes.push(new Node(i, cards[i]));
+      }
+
+      for (let i = 0; i < N; i++) {
+        for (let j = 0; j < N; j++) {
+          if (i == j) {
+            continue;
+          }
+
+          let c1 = cards[i];
+          let c2 = cards[j];
+
+          if (c1.cardClass == c2.cardClass) {
+            this.links.push(new Link(i, j));
+          }
+        }  
       }
   }
 }

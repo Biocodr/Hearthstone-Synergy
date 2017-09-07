@@ -15,7 +15,7 @@ export class Node implements d3.SimulationNodeDatum {
     id: string;
     linkCount: number = 0;
   
-    constructor(id, card?: Card) {
+    constructor(id, public card: Card) {
       this.id = id;
     }
   
@@ -32,7 +32,23 @@ export class Node implements d3.SimulationNodeDatum {
     }
   
     get color() {
-      let index = Math.floor(APP_CONFIG.SPECTRUM.length * this.normal());
-      return APP_CONFIG.SPECTRUM[index];
+      // let index = Math.floor(APP_CONFIG.SPECTRUM.length * this.normal());
+      // return APP_CONFIG.SPECTRUM[index];
+
+      switch (this.card.cardClass) {
+        case "DEATHKNIGHT": return "black"; 
+        case "DREAM": return "black";
+        case "DRUID": return "green"; 
+        case "HUNTER": return "brown";
+        case "INVALID": return "black"; 
+        case "MAGE": return "blue";
+        case "NEUTRAL": return "gray"; 
+        case "PALADIN": return "orange"; 
+        case "PRIEST": return "yellow";
+        case "ROGUE": return "red";
+        case "SHAMAN": return "pink"; 
+        case "WARLOCK": return "violet"; 
+        case "WARRIOR": return "silver";
+      }
     }
 }
