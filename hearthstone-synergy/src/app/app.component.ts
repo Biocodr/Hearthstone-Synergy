@@ -7,7 +7,9 @@ import { RootState, TodoItem } from './app.state';
 import { AddTodoItemAction } from './app.actions';
 
 import { IncrementAction, DecrementAction } from './counter';
+import * as d3 from 'd3';
 import { Node, Link } from './d3';
+import { Card, cards } from './hearthstone';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,8 @@ export class AppComponent implements OnInit {
     this.counter$ = store.select(s => s.counter.counter);
     this.items$ = store.select(s => s.app.items);
 
-    this.generateGraphData();
+    // this.generateGraphData();
+    this.generateGraphData2();
   }
 
   increment() {
@@ -54,24 +57,31 @@ export class AppComponent implements OnInit {
     }
   }
 
-  generateGraphData() {
-    const N = APP_CONFIG.N;
-    const getIndex = number => number - 1;
+  // generateGraphData() {
+  //   const N = APP_CONFIG.N;
+  //   const getIndex = number => number - 1;
 
-    // constructing the nodes array
-    for (let i = 1; i <= N; i++) {
-      this.nodes.push(new Node(i))
-    }
+  //   // constructing the nodes array
+  //   for (let i = 1; i <= N; i++) {
+  //     this.nodes.push(new Node(i))
+  //   }
 
-    for (let i = 1; i <= N; i++) {
-      for (let m = 2; i * m <= N; m++) {
-        // increasing connections toll on connecting nodes
-        this.nodes[getIndex(i)].linkCount++;
-        this.nodes[getIndex(i * m)].linkCount++;
+  //   for (let i = 1; i <= N; i++) {
+  //     for (let m = 2; i * m <= N; m++) {
+  //       // increasing connections toll on connecting nodes
+  //       this.nodes[getIndex(i)].linkCount++;
+  //       this.nodes[getIndex(i * m)].linkCount++;
 
-        // connecting the nodes before starting the simulation
-        this.links.push(new Link(i, i * m));
+  //       // connecting the nodes before starting the simulation
+  //       this.links.push(new Link(i, i * m));
+  //     }
+  //   }
+  // }
+
+  generateGraphData2() {
+    
+      for (let i = 0; i < cards.length; i++) {
+        this.nodes.push(new Node(i, cards[i]));
       }
-    }
   }
 }

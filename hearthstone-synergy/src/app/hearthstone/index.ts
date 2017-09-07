@@ -1,2 +1,3 @@
 export * from './card';
-export * from './dependency-graph';
+export * from './card.service';
+export * from './cards';

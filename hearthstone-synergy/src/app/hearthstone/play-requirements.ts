@@ -1,6 +1,6 @@
 export interface PlayRequirements {
-    REQ_NONSELF_TARGET: number;
-    REQ_TARGET_IF_AVAILABLE: number;
+    REQ_NONSELF_TARGET?: number;
+    REQ_TARGET_IF_AVAILABLE?: number;
     REQ_FRIENDLY_TARGET?: number;
     REQ_MINION_TARGET?: number;
     REQ_NUM_MINION_SLOTS?: number;
