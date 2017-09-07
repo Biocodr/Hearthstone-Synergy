@@ -4,10 +4,14 @@ import * as d3 from 'd3';
 import { Node } from './node';
 import { Link } from './link';
 
+// https://github.com/d3/d3-force/blob/master/README.md
 const FORCES = {
-    LINKS: 1 / 50,
-    COLLISION: 1,
-    CHARGE: -1
+    LINK_STRENGTH: link => { return 1 / 500; /*Math.min(link.source, link.target)*/ },
+    LINK_DISTANCE: 0, // default: 30
+    COLLISION_STRENGTH: 0.9, // [0, 1], default 0.7
+    COLLISION_RADIUS: 10, // bonus distance between nodes
+    COLLISION_ITERATION: 2, // [1, ...], default 1
+    CHARGE_STRENGTH: -1 // neagtive: repulsion, positive: gravity, default: -30
 }
 
 export class ForceDirectedGraph {
@@ -29,19 +33,20 @@ export class ForceDirectedGraph {
             throw new Error('missing options when initializing simulation');
         }
 
-        /** Creating the simulation */
+        // creating the simulation
         if (!this.simulation) {
             const ticker = this.ticker;
 
             this.simulation = d3.forceSimulation()
                 .force("charge", d3.forceManyBody()
-                    .strength(d => FORCES.CHARGE * d['r']))
+                    .strength(d => d['r'] * FORCES.CHARGE_STRENGTH))
                 .force("collide", d3.forceCollide()
-                    .strength(FORCES.COLLISION)
-                    .radius(d => d['r'] + 5)
-                    .iterations(2));
+                    .strength(FORCES.COLLISION_STRENGTH)
+                    .radius(d => d['r'] + FORCES.COLLISION_RADIUS)
+                    .iterations(FORCES.COLLISION_ITERATION)
+                    );
 
-            // Connecting the d3 ticker to an angular event emitter
+            // connecting the d3 ticker to an angular event emitter
             this.simulation.on('tick', function () {
                 ticker.emit(this);
             });
@@ -50,27 +55,27 @@ export class ForceDirectedGraph {
             this.initLinks();
         }
 
-        /** Updating the central force of the simulation */
+        // updating the central force of the simulation
         this.simulation.force("centers", d3.forceCenter(options.width / 2, options.height / 2));
 
-        /** Restarting the simulation internal timer */
+        // restarting the simulation internal timer
         this.simulation.restart();
     }
 
-    connectNodes(source, target) {
-        let link;
+    // connectNodes(source, target) {
+    //     let link;
 
-        if (!this.nodes[source] || !this.nodes[target]) {
-            throw new Error('One of the nodes does not exist');
-        }
+    //     if (!this.nodes[source] || !this.nodes[target]) {
+    //         throw new Error('One of the nodes does not exist');
+    //     }
 
-        link = new Link(source, target);
-        this.simulation.stop();
-        this.links.push(link);
-        this.simulation.alphaTarget(0.3).restart();
+    //     link = new Link(source, target);
+    //     this.simulation.stop();
+    //     this.links.push(link);
+    //     this.simulation.alphaTarget(0.3).restart();
 
-        this.initLinks();
-    }
+    //     this.initLinks();
+    // }
 
     initNodes() {
         if (!this.simulation) {
@@ -88,7 +93,8 @@ export class ForceDirectedGraph {
         this.simulation.force('links',
             d3.forceLink(this.links)
                 .id(d => d['id'])
-                .strength(FORCES.LINKS)
-        );
+                .strength(FORCES.LINK_STRENGTH)
+                .distance(FORCES.LINK_DISTANCE)
+      );
     }
 }
