@@ -1,8 +1,9 @@
 import APP_CONFIG from '../../app.config';
+import { Card } from '../../hearthstone';
 
 export class Node implements d3.SimulationNodeDatum {
     
-     // optional - defining optional implementation properties - required for relevant typing assistance
+    // optional - defining optional implementation properties - required for relevant typing assistance
     index?: number;
     x?: number;
     y?: number;
@@ -14,7 +15,7 @@ export class Node implements d3.SimulationNodeDatum {
     id: string;
     linkCount: number = 0;
   
-    constructor(id) {
+    constructor(id, card?: Card) {
       this.id = id;
     }
   

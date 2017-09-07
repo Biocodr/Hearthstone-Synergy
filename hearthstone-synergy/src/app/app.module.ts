@@ -10,6 +10,7 @@ import { D3_DIRECTIVES } from './d3';
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './barchart/barchart.component';
 import { GraphComponent } from './visuals/graph/graph.component';
+import { DependencyGraphComponent } from './hearthstone';
 import { SHARED_VISUALS } from './visuals/shared';
 
 import { reducers } from './app.reducer';
@@ -21,6 +22,7 @@ import { AppEffects }from './app.effects';
     AppComponent,
     BarChartComponent,
     GraphComponent,
+    DependencyGraphComponent,
     ...SHARED_VISUALS,
     ...D3_DIRECTIVES
   ],
