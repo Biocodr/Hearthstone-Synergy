@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { D3Service } from './d3';
+import { D3_DIRECTIVES } from './d3';
 
 import { AppComponent } from './app.component';
 import { BarChartComponent } from './barchart/barchart.component';
@@ -21,6 +22,7 @@ import { AppEffects }from './app.effects';
     BarChartComponent,
     GraphComponent,
     ...SHARED_VISUALS,
+    ...D3_DIRECTIVES
   ],
   imports: [
     BrowserModule,
