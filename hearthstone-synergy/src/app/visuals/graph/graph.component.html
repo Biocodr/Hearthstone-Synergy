@@ -4,6 +4,8 @@
             [linkVisual]="link"></g>
             
         <g *ngFor="let node of nodes"
-            [nodeVisual]="node"></g>
+            [nodeVisual]="node"
+            [draggableNode]="node"
+            [draggableInGraph]="graph"></g>
     </g>
 </svg>
