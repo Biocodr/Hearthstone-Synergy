@@ -10,8 +10,10 @@ const FORCES = {
     LINK_DISTANCE: (link: Link, i: number, links:Link[]) => { return 30; }, // default: 30
     COLLISION_STRENGTH: 0.7, // [0, 1], default 0.7
     COLLISION_RADIUS: 10, // bonus distance between nodes
-    COLLISION_ITERATION: 2, // [1, ...], default 1
-    CHARGE_STRENGTH: -1 // neagtive: repulsion, positive: gravity, default: -30
+    COLLISION_ITERATION: 1, // [1, ...], default 1
+    CHARGE_STRENGTH: (node: Node, i: number, nodes: Node[]) => { 
+        return node.r * -1;
+     }, // neagtive: repulsion, positive: gravity, default: -30
 }
 
 export class ForceDirectedGraph {
@@ -39,7 +41,7 @@ export class ForceDirectedGraph {
 
             this.simulation = d3.forceSimulation()
                 .force("charge", d3.forceManyBody()
-                    .strength(d => d['r'] * FORCES.CHARGE_STRENGTH))
+                    .strength(FORCES.CHARGE_STRENGTH))
                 .force("collide", d3.forceCollide()
                     .strength(FORCES.COLLISION_STRENGTH)
                     .radius(d => d['r'] + FORCES.COLLISION_RADIUS)
