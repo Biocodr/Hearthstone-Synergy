@@ -1,0 +1,10 @@
+C:\Projects\Hearthstone Synergy\backend\bin\Debug\netcoreapp2.0\backend.deps.json
+C:\Projects\Hearthstone Synergy\backend\bin\Debug\netcoreapp2.0\backend.runtimeconfig.json
+C:\Projects\Hearthstone Synergy\backend\bin\Debug\netcoreapp2.0\backend.runtimeconfig.dev.json
+C:\Projects\Hearthstone Synergy\backend\bin\Debug\netcoreapp2.0\backend.dll
+C:\Projects\Hearthstone Synergy\backend\bin\Debug\netcoreapp2.0\backend.pdb
+C:\Projects\Hearthstone Synergy\backend\obj\Debug\netcoreapp2.0\backend.csproj.CoreCompileInputs.cache
+C:\Projects\Hearthstone Synergy\backend\obj\Debug\netcoreapp2.0\backend.AssemblyInfoInputs.cache
+C:\Projects\Hearthstone Synergy\backend\obj\Debug\netcoreapp2.0\backend.AssemblyInfo.cs
+C:\Projects\Hearthstone Synergy\backend\obj\Debug\netcoreapp2.0\backend.dll
+C:\Projects\Hearthstone Synergy\backend\obj\Debug\netcoreapp2.0\backend.pdb
