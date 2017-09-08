@@ -16,6 +16,7 @@ const FORCES = {
      }, // neagtive: repulsion, positive: gravity, default: -30
 }
 
+// https://medium.com/@lsharir/visualizing-data-with-angular-and-d3-209dde784aeb
 export class ForceDirectedGraph {
     public ticker: EventEmitter<d3.Simulation<Node, Link>> = new EventEmitter();
     public simulation: d3.Simulation<any, any>;

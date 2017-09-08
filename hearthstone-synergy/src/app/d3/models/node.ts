@@ -31,6 +31,10 @@ export class Node implements d3.SimulationNodeDatum {
       return (30 * this.normal() + 10) + 'px';
     }
   
+    get text() {
+      return this.card.name;
+    }
+
     get color() {
       // let index = Math.floor(APP_CONFIG.SPECTRUM.length * this.normal());
       // return APP_CONFIG.SPECTRUM[index];
